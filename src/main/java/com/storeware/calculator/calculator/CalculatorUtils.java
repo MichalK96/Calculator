@@ -2,6 +2,10 @@ package com.storeware.calculator.calculator;
 
 public class CalculatorUtils {
 
+    private CalculatorUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     static int getNumber(String expression) {
         StringBuilder output = new StringBuilder();
         for (int i = expression.length() - 1;i >= 0; i--) {
