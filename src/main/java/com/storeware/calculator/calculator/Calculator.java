@@ -5,7 +5,10 @@ import java.util.List;
 public class Calculator {
 
 
-    public int calculate(List<String> mathematicalOperations) {
+    public int calculateSetOfOperations(List<String> mathematicalOperations) {
+        if (mathematicalOperations.isEmpty()) {
+            throw new IllegalArgumentException("No Operations provided");
+        }
         int result = CalculatorUtils.getNumber(mathematicalOperations.get(mathematicalOperations.size() - 1));
         for (int i = 0; i < mathematicalOperations.size() - 1; i++) {
             String expression = mathematicalOperations.get(i);
@@ -14,7 +17,7 @@ public class Calculator {
         return result;
     }
 
-    private int calculateOperation(int result, String expression) {
+    int calculateOperation(int result, String expression) {
         int num = CalculatorUtils.getNumber(expression);
         switch (CalculatorUtils.getOperator(expression)) {
             case "add" -> {

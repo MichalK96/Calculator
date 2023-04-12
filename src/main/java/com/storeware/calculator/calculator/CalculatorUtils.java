@@ -8,6 +8,9 @@ public class CalculatorUtils {
             if (isDigit(expression.charAt(i))) {
                 output.append(expression.charAt(i));
             } else {
+                if (output.isEmpty()) {
+                    throw new IllegalArgumentException("No number provided");
+                }
                 break;
             }
         }
@@ -29,6 +32,9 @@ public class CalculatorUtils {
             if (isLetter(expression.charAt(i))) {
                 operator.append(expression.charAt(i));
             } else {
+                if (operator.isEmpty()) {
+                    throw new IllegalArgumentException("No operator provided");
+                }
                 break;
             }
         }

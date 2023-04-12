@@ -9,7 +9,7 @@ public class Main {
 
         Calculator calculator = new Calculator();
         FileReader fileReader = new FileReader();
-        int result = calculator.calculate(fileReader.readFile());
+        int result = calculator.calculateSetOfOperations(fileReader.readFile());
 
         ConsoleMessage.displayResult(result);
 
