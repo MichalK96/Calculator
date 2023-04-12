@@ -1,0 +1,6 @@
+com\storeware\calculator\Main.class
+com\storeware\calculator\output\ConsoleMessage.class
+com\storeware\calculator\calculator\Calculator.class
+com\storeware\calculator\input\FileReader.class
+com\storeware\calculator\calculator\CalculatorUtils.class
+com\storeware\calculator\input\ConsoleReader.class
