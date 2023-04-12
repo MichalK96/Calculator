@@ -1,0 +1,2 @@
+To run the application via console, you need to navigate to the location of the storeware-calculator.jar file and enter the command "java -jar storeware-calculator.jar", then follow the instructions displayed in the console.
+Please note that in the directory with the executable file, check if there is a file called input.txt from which data is retrieved when the default path is selected. You can also provide your own commands for the calculator there, or enter the path to a file with pre-existing commands.
