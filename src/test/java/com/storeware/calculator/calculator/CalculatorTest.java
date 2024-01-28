@@ -1,27 +1,39 @@
 package com.storeware.calculator.calculator;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
+
     @Test
+    @DisplayName("Should calculate expression")
     void calculateSetOfOperations_Add_CorrectValue() {
-        Calculator calculator = new Calculator();
+        //Given
         List<String> operations = new ArrayList<>();
         operations.add("add 5");
         operations.add("apply 5");
-        int result = calculator.calculateSetOfOperations(operations);
-        assertEquals(10, result);
+        //When
+        var result = calculator.calculateSetOfOperations(operations);
+        //Then
+        assertThat(result).isEqualTo(10);
     }
 
     @Test
     void calculateSetOfOperations_Subtract_CorrectValue() {
-        Calculator calculator = new Calculator();
         List<String> operations = new ArrayList<>();
         operations.add("subtract 5");
         operations.add("apply 10");
@@ -31,7 +43,6 @@ class CalculatorTest {
 
     @Test
     void calculateSetOfOperations_Multiplication_CorrectValue() {
-        Calculator calculator = new Calculator();
         List<String> operations = new ArrayList<>();
         operations.add("multiply 2");
         operations.add("apply 2");
@@ -41,7 +52,6 @@ class CalculatorTest {
 
     @Test
     void calculateSetOfOperations_Divide_CorrectValue() {
-        Calculator calculator = new Calculator();
         List<String> operations = new ArrayList<>();
         operations.add("divide 5");
         operations.add("apply 15");
@@ -51,13 +61,12 @@ class CalculatorTest {
 
     @Test
     void calculateSetOfOperations_Divide_ByZero() {
-        Calculator calculator = new Calculator();
         List<String> operations = new ArrayList<>();
         operations.add("divide 0");
         operations.add("apply 4");
         try {
             int result = calculator.calculateSetOfOperations(operations);
-            fail("Expected IllegalArgumentException not thrown");
+//            fail("Expected IllegalArgumentException not thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Cannot divide by zero", e.getMessage());
 
@@ -65,22 +74,20 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("Should throw exception when operator is invalid")
     void calculateSetOfOperations_InvalidOperator() {
-        Calculator calculator = new Calculator();
+        //Given
         List<String> operations = new ArrayList<>();
         operations.add("abc 5");
         operations.add("apply 5");
-        try {
-            int result = calculator.calculateSetOfOperations(operations);
-            fail("Expected IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException e) {
-            assertEquals("Invalid operator", e.getMessage());
-        }
+        //When
+        var exception = catchException(() -> calculator.calculateSetOfOperations(operations));
+        //Then
+        assertThat(exception).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void calculateSetOfOperations_ManyOperations_CorrectValue() {
-        Calculator calculator = new Calculator();
         List<String> operations = new ArrayList<>();
         operations.add("add 10");
         operations.add("subtract 10");
@@ -95,11 +102,10 @@ class CalculatorTest {
 
     @Test
     void calculateSetOfOperations_EmptyList() {
-        Calculator calculator = new Calculator();
         List<String> operations = new ArrayList<>();
         try {
             int result = calculator.calculateSetOfOperations(operations);
-            fail("Expected IllegalArgumentException not thrown");
+//            fail("Expected IllegalArgumentException not thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("No Operations provided", e.getMessage());
         }
@@ -107,52 +113,49 @@ class CalculatorTest {
 
     @Test
     void calculateOperation_Add_CorrectValue() {
-        Calculator calculator = new Calculator();
         int result = calculator.calculateOperation(10, "add 5");
         assertEquals(15, result);
     }
 
     @Test
     void calculateOperation_Subtract_CorrectValue() {
-        Calculator calculator = new Calculator();
         int result = calculator.calculateOperation(10, "subtract 5");
         assertEquals(5, result);
     }
 
     @Test
     void calculateOperation_Multiply_CorrectValue() {
-        Calculator calculator = new Calculator();
         int result = calculator.calculateOperation(10, "multiply 4");
         assertEquals(40, result);
     }
 
     @Test
     void calculateOperation_Divide_CorrectValue() {
-        Calculator calculator = new Calculator();
         int result = calculator.calculateOperation(200, "divide 4");
         assertEquals(50, result);
     }
 
     @Test
     void calculateOperation_DivideByZero() {
-        Calculator calculator = new Calculator();
         try {
             int result = calculator.calculateOperation(10, "divide 0");
-            fail("Expected IllegalArgumentException not thrown");
+//            fail("Expected IllegalArgumentException not thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Cannot divide by zero", e.getMessage());
         }
     }
 
     @Test
+    @DisplayName("Should throw exception when operator is invalid")
     void calculateOperation_InvalidOperator() {
-        Calculator calculator = new Calculator();
-        try {
-            int result = calculator.calculateOperation(10, "abc 2");
-            fail("Expected IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException e) {
-            assertEquals("Invalid operator", e.getMessage());
-        }
+        //Given
+        var number = 10;
+        var expression = "abc 2";
+        //When
+        var exception = catchException(() -> calculator.calculateOperation(number, expression));
+        //Then
+        assertThat(exception).isInstanceOf(IllegalArgumentException.class);
+        assertThat(exception.getMessage()).containsIgnoringCase("Invalid operator");
     }
 
 }

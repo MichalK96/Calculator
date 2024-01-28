@@ -1,16 +1,22 @@
 package com.storeware.calculator.calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class CalculatorUtilsTest {
 
     @Test
+    @DisplayName("Should extract number from expression")
     void getNumber_CorrectValue_10() {
+        //Given
         String expression = "add 10";
-        int result = CalculatorUtils.getNumber(expression);
-        assertEquals(10, result);
+        //When
+        var result = CalculatorUtils.getNumber(expression);
+        //Then
+        assertThat(result).isEqualTo(10);
     }
 
     @Test
@@ -21,39 +27,41 @@ class CalculatorUtilsTest {
     }
 
     @Test
+    @DisplayName("Should throw exception when expression is incorrect")
     void getNumber_IncorrectValue() {
+        //Given
         String expression = " ";
-        try {
-            int result = CalculatorUtils.getNumber(expression);
-            fail("Expected IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException e) {
-            assertEquals("No number provided", e.getMessage());
-        }
+        //When
+        var exception = catchException(() -> CalculatorUtils.getNumber(expression));
+        //Then
+        assertThat(exception).isInstanceOf(IllegalArgumentException.class);
+        assertThat(exception.getMessage()).containsIgnoringCase("no number");
     }
 
     @Test
     void getOperator_CorrectValue_add() {
         String expression = "add 5";
-        String result = CalculatorUtils.getOperator(expression);
-        assertEquals("add", result);
+        var result = CalculatorUtils.getOperator(expression);
+        assertEquals(ArithmeticOperators.ADD, result);
     }
 
     @Test
     void getOperator_CorrectValue_multiplication() {
-        String expression = "multiplication 5";
-        String result = CalculatorUtils.getOperator(expression);
-        assertEquals("multiplication", result);
+        String expression = "multiply 5";
+        var result = CalculatorUtils.getOperator(expression);
+        assertEquals(ArithmeticOperators.MULTIPLY, result);
     }
 
     @Test
+    @DisplayName("Should throw exception when no operator provided")
     void getOperator_IncorrectValue_NoOperator() {
+        //Given
         String expression = "5";
-        try {
-            String result = CalculatorUtils.getOperator(expression);
-            fail("Expected IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException e) {
-            assertEquals("No operator provided", e.getMessage());
-        }
+        //When
+        var exception = catchException(() -> CalculatorUtils.getOperator(expression));
+        //Then
+        assertThat(exception).isInstanceOf(IllegalArgumentException.class);
+        assertThat(exception.getMessage()).containsIgnoringCase("no operator");
     }
 
 

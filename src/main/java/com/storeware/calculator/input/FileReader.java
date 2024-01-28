@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class FileReader {
 
-    String fileName = "input.txt";
+    final String fileName = "input.txt";
 
     public List<String> readFile() {
         List<String> mathematicalOperations = new ArrayList<>();

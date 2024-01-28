@@ -7,10 +7,11 @@ import com.storeware.calculator.output.ConsoleMessage;
 public class Main {
     public static void main(String[] args) {
 
-        Calculator calculator = new Calculator();
-        FileReader fileReader = new FileReader();
+        final var calculator = new Calculator();
+        final var fileReader = new FileReader();
 
-        int result = calculator.calculateSetOfOperations(fileReader.readFile());
+        var operations = fileReader.readFile();
+        var result = calculator.calculateSetOfOperations(operations);
         ConsoleMessage.displayResult(result);
 
     }

@@ -30,7 +30,7 @@ public class CalculatorUtils {
         return c >= 'a' && c <= 'z';
     }
 
-    static String getOperator(String expression) {
+    static ArithmeticOperators getOperator(String expression) {
         StringBuilder operator = new StringBuilder();
         for (int i = 0; i < expression.length(); i++) {
             if (isLetter(expression.charAt(i))) {
@@ -42,7 +42,11 @@ public class CalculatorUtils {
                 break;
             }
         }
-        return operator.toString();
+        try {
+            return ArithmeticOperators.valueOf(operator.toString().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid operator: " + operator);
+        }
     }
 
 }

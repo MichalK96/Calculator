@@ -9,31 +9,31 @@ public class Calculator {
         if (mathematicalOperations.isEmpty()) {
             throw new IllegalArgumentException("No Operations provided");
         }
-        int result = CalculatorUtils.getNumber(mathematicalOperations.get(mathematicalOperations.size() - 1));
+        int number = CalculatorUtils.getNumber(mathematicalOperations.get(mathematicalOperations.size() - 1));
         for (int i = 0; i < mathematicalOperations.size() - 1; i++) {
             String expression = mathematicalOperations.get(i);
-            result = calculateOperation(result, expression);
+            number = calculateOperation(number, expression);
         }
-        return result;
+        return number;
     }
 
-    int calculateOperation(int result, String expression) {
+    int calculateOperation(int number, String expression) {
         int num = CalculatorUtils.getNumber(expression);
         switch (CalculatorUtils.getOperator(expression)) {
-            case "add" -> {
-                return result + num;
+            case ADD -> {
+                return number + num;
             }
-            case "subtract" -> {
-                return result - num;
+            case SUBTRACT -> {
+                return number - num;
             }
-            case "multiply" -> {
-                return result * num;
+            case MULTIPLY -> {
+                return number * num;
             }
-            case "divide" -> {
+            case DIVIDE -> {
                 if (num == 0) {
                     throw new IllegalArgumentException("Cannot divide by zero");
                 }
-                return result / num;
+                return number / num;
             }
             default -> throw new IllegalArgumentException("Invalid operator");
         }
