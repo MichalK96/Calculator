@@ -1,15 +1,26 @@
-package com.storeware.calculator.calculator;
+package com.storeware.calculator.input;
 
-public class CalculatorUtils {
+import com.storeware.calculator.core.ArithmeticOperator;
 
-    private CalculatorUtils() {
+class LineExpressionConverter {
+
+    private static final String startExpressionWord = "apply";
+
+    private LineExpressionConverter() {
         throw new IllegalStateException("Utility class");
     }
 
-    static int getNumber(String expression) {
+    static Expression createExpression(String lineExpression) {
+        return Expression.builder()
+                .number(getNumber(lineExpression))
+                .arithmeticOperator(getOperator(lineExpression))
+                .build();
+    }
+
+    private static int getNumber(String expression) {
         StringBuilder output = new StringBuilder();
         for (int i = expression.length() - 1;i >= 0; i--) {
-            if (isDigit(expression.charAt(i))) {
+            if (Character.isDigit(expression.charAt(i))) {
                 output.append(expression.charAt(i));
             } else {
                 if (output.isEmpty()) {
@@ -22,31 +33,29 @@ public class CalculatorUtils {
         return Integer.parseInt(String.valueOf(output));
     }
 
-    private static boolean isDigit(char c) {
-        return c >= '0' && c <= '9';
-    }
-
-    private static boolean isLetter(char c) {
-        return c >= 'a' && c <= 'z';
-    }
-
-    static ArithmeticOperators getOperator(String expression) {
+    private static ArithmeticOperator getOperator(String expression) {
         StringBuilder operator = new StringBuilder();
         for (int i = 0; i < expression.length(); i++) {
-            if (isLetter(expression.charAt(i))) {
+            if (Character.isLetter(expression.charAt(i))) {
                 operator.append(expression.charAt(i));
             } else {
                 if (operator.isEmpty()) {
                     throw new IllegalArgumentException("No operator provided");
+                } else if (isStartExpression(expression)) {
+                    return null;
                 }
                 break;
             }
         }
         try {
-            return ArithmeticOperators.valueOf(operator.toString().toUpperCase());
+            return ArithmeticOperator.valueOf(operator.toString().toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Invalid operator: " + operator);
         }
+    }
+
+    private static boolean isStartExpression(String expression) {
+        return expression.equalsIgnoreCase(startExpressionWord);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.storeware.calculator.calculator;
+package com.storeware.calculator.core;
 
 import java.util.List;
 
@@ -9,31 +9,31 @@ public class Calculator {
         if (mathematicalOperations.isEmpty()) {
             throw new IllegalArgumentException("No Operations provided");
         }
-        int number = CalculatorUtils.getNumber(mathematicalOperations.get(mathematicalOperations.size() - 1));
+        int result = CalculatorUtils.getNumber(mathematicalOperations.get(mathematicalOperations.size() - 1));
         for (int i = 0; i < mathematicalOperations.size() - 1; i++) {
             String expression = mathematicalOperations.get(i);
-            number = calculateOperation(number, expression);
+            result = calculateOperation(result, expression);
         }
-        return number;
+        return result;
     }
 
-    int calculateOperation(int number, String expression) {
+    int calculateOperation(int result, String expression) {
         int num = CalculatorUtils.getNumber(expression);
         switch (CalculatorUtils.getOperator(expression)) {
             case ADD -> {
-                return number + num;
+                return result + num;
             }
             case SUBTRACT -> {
-                return number - num;
+                return result - num;
             }
             case MULTIPLY -> {
-                return number * num;
+                return result * num;
             }
             case DIVIDE -> {
                 if (num == 0) {
                     throw new IllegalArgumentException("Cannot divide by zero");
                 }
-                return number / num;
+                return result / num;
             }
             default -> throw new IllegalArgumentException("Invalid operator");
         }

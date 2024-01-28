@@ -1,5 +1,7 @@
 package com.storeware.calculator.calculator;
 
+import com.storeware.calculator.core.ArithmeticOperator;
+import com.storeware.calculator.core.CalculatorUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
@@ -42,14 +44,14 @@ class CalculatorUtilsTest {
     void getOperator_CorrectValue_add() {
         String expression = "add 5";
         var result = CalculatorUtils.getOperator(expression);
-        assertEquals(ArithmeticOperators.ADD, result);
+        assertEquals(ArithmeticOperator.ADD, result);
     }
 
     @Test
     void getOperator_CorrectValue_multiplication() {
         String expression = "multiply 5";
         var result = CalculatorUtils.getOperator(expression);
-        assertEquals(ArithmeticOperators.MULTIPLY, result);
+        assertEquals(ArithmeticOperator.MULTIPLY, result);
     }
 
     @Test

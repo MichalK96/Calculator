@@ -8,21 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileReader {
+public class FileInputReader implements InputSource{
 
     final String fileName = "input.txt";
 
-    public List<String> readFile() {
-        List<String> mathematicalOperations = new ArrayList<>();
+    private List<Expression> readFile() {
+        List<Expression> mathematicalOperations = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(provideFilePath()))){
             while (scanner.hasNextLine()) {
-                mathematicalOperations.add(scanner.nextLine());
+                mathematicalOperations.add(LineExpressionConverter.createExpression(scanner.nextLine()));
             }
         } catch (FileNotFoundException e) {
             ConsoleMessage.displayError("An error occurred");
             e.printStackTrace();
         }
-        if (!checkCorrectKeyword(mathematicalOperations.get(mathematicalOperations.size() - 1))) {
+        if (!containsStartExpression(mathematicalOperations)) {
             throw new IllegalArgumentException("Provide correct end of statement");
         }
         return mathematicalOperations;
@@ -38,9 +38,14 @@ public class FileReader {
         }
     }
 
-    private boolean checkCorrectKeyword(String expression) {
-        return expression.startsWith("apply ");
+    private boolean containsStartExpression(List<Expression> operations) {
+        return operations.stream()
+                .anyMatch(Expression::isStartExpression);
     }
 
 
+    @Override
+    public List<Expression> readInput() {
+        return readFile();
+    }
 }
