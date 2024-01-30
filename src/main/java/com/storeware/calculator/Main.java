@@ -13,6 +13,7 @@ public class Main {
                 .build();
 
         var engine = new Engine(calculatorResources);
+        engine.run();
 
 
 //        final var calculator = new Calculator();

@@ -2,21 +2,25 @@ package com.storeware.calculator.core;
 
 import com.storeware.calculator.CalculatorResources;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
 public class Engine {
 
-    final CalculatorResources resources;
+    private final CalculatorResources resources;
     private List<Expression> inputData;
 
+    public Engine(CalculatorResources resources) {
+        this.resources = resources;
+    }
+
     public void run() {
-        inputData = resources.getInput().readInput();
+        inputData = resources.getInputHandler().readInput();
         validateInputData();
 
         var result = count();
-        resources.getOutput().handleResult(result);
+        resources.getOutputHandler().handleResult(result);
     }
 
     private void validateInputData() {
@@ -29,7 +33,11 @@ public class Engine {
     }
 
     private double count() {
-        return 0;
+        double result = 0;
+        for (Expression expression : inputData) {
+            result += expression.getArithmeticOperator().performOperation(result, expression.getNumber());
+        }
+        return result;
     }
 
     public int calculateSetOfOperations(List<String> mathematicalOperations) {

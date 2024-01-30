@@ -12,8 +12,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class CalculatorResources {
 
-    private final InputStrategy input;
-    private final OutputStrategy output;
+    private final InputStrategy inputHandler;
+    private final OutputStrategy outputHandler;
 
     public static CalculatorResourcesFactory factory() {
         return new CalculatorResourcesFactory();
@@ -36,8 +36,8 @@ public class CalculatorResources {
 
         public CalculatorResources build() {
             return CalculatorResources.builder()
-                    .input(inputStrategy)
-                    .output(outputStrategy)
+                    .inputHandler(inputStrategy)
+                    .outputHandler(outputStrategy)
                     .build();
         }
 
