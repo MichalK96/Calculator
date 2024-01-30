@@ -1,6 +1,9 @@
-package com.storeware.calculator.input;
+package com.storeware.calculator.infrastructure.input;
 
-import com.storeware.calculator.output.ConsoleMessage;
+import com.storeware.calculator.util.ConsoleReader;
+import com.storeware.calculator.core.Expression;
+import com.storeware.calculator.port.in.InputStrategy;
+import com.storeware.calculator.port.in.LineExpressionConverter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileInputReader implements InputSource{
+public class FileInputHandler implements InputStrategy {
 
     final String fileName = "input.txt";
 
@@ -19,7 +22,7 @@ public class FileInputReader implements InputSource{
                 mathematicalOperations.add(LineExpressionConverter.createExpression(scanner.nextLine()));
             }
         } catch (FileNotFoundException e) {
-            ConsoleMessage.displayError("An error occurred");
+            ConsoleDisplay.displayError("An error occurred");
             e.printStackTrace();
         }
         if (!containsStartExpression(mathematicalOperations)) {
@@ -29,11 +32,11 @@ public class FileInputReader implements InputSource{
     }
 
     private String provideFilePath() {
-        ConsoleMessage.displayMessage("Do you want to use the default file? (y/n)");
+        ConsoleDisplay.displayMessage("Do you want to use the default file? (y/n)");
         if (ConsoleReader.consoleReadString().equals("y")) {
             return fileName;
         } else {
-            ConsoleMessage.displayMessage("Provide file path");
+            ConsoleDisplay.displayMessage("Provide file path");
             return ConsoleReader.consoleReadString();
         }
     }
@@ -43,9 +46,11 @@ public class FileInputReader implements InputSource{
                 .anyMatch(Expression::isStartExpression);
     }
 
-
     @Override
     public List<Expression> readInput() {
-        return readFile();
+        return null;
     }
+
+
+
 }

@@ -1,4 +1,4 @@
-package com.storeware.calculator.input;
+package com.storeware.calculator.core;
 
 import com.storeware.calculator.core.ArithmeticOperator;
 import lombok.Builder;

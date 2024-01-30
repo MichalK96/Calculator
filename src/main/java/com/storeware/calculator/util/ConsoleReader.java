@@ -1,4 +1,4 @@
-package com.storeware.calculator.input;
+package com.storeware.calculator.util;
 
 import java.util.Scanner;
 

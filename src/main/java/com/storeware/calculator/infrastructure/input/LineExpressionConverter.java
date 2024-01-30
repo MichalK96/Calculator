@@ -1,6 +1,7 @@
-package com.storeware.calculator.input;
+package com.storeware.calculator.infrastructure.input;
 
 import com.storeware.calculator.core.ArithmeticOperator;
+import com.storeware.calculator.core.Expression;
 
 class LineExpressionConverter {
 

@@ -6,6 +6,4 @@ public enum ArithmeticOperator {
     SUBTRACT,
     MULTIPLY,
     DIVIDE,
-    POWER,
-    APPLY;
 }
