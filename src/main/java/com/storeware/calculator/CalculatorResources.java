@@ -1,7 +1,7 @@
 package com.storeware.calculator;
 
-import com.storeware.calculator.port.in.InputStrategy;
-import com.storeware.calculator.port.out.OutputStrategy;
+import com.storeware.calculator.application.port.in.InputStrategy;
+import com.storeware.calculator.application.port.out.OutputStrategy;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

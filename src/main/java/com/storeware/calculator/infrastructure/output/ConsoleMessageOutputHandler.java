@@ -1,6 +1,6 @@
 package com.storeware.calculator.infrastructure.output;
 
-import com.storeware.calculator.port.out.OutputStrategy;
+import com.storeware.calculator.application.port.out.OutputStrategy;
 import com.storeware.calculator.util.ConsolePrinter;
 
 public class ConsoleMessageOutputHandler implements OutputStrategy {

@@ -1,7 +1,7 @@
 package com.storeware.calculator.infrastructure.input;
 
-import com.storeware.calculator.core.ArithmeticOperator;
-import com.storeware.calculator.core.Expression;
+import com.storeware.calculator.infrastructure.Expression;
+import com.storeware.calculator.infrastructure.Operator;
 
 class LineExpressionConverter {
 
@@ -14,14 +14,14 @@ class LineExpressionConverter {
     static Expression createExpression(String lineExpression) {
         return Expression.builder()
                 .number(getNumber(lineExpression))
-                .arithmeticOperator(getOperator(lineExpression))
+                .operator(getOperator(lineExpression))
                 .build();
     }
 
-    private static int getNumber(String expression) {
+    private static double getNumber(String expression) {
         StringBuilder output = new StringBuilder();
         for (int i = expression.length() - 1;i >= 0; i--) {
-            if (Character.isDigit(expression.charAt(i))) {
+            if (isPartOfNumber(expression.charAt(i))) {
                 output.append(expression.charAt(i));
             } else {
                 if (output.isEmpty()) {
@@ -31,10 +31,10 @@ class LineExpressionConverter {
             }
         }
         output.reverse();
-        return Integer.parseInt(String.valueOf(output));
+        return Double.parseDouble(String.valueOf(output));
     }
 
-    private static ArithmeticOperator getOperator(String expression) {
+    private static Operator getOperator(String expression) {
         StringBuilder operator = new StringBuilder();
         for (int i = 0; i < expression.length(); i++) {
             if (Character.isLetter(expression.charAt(i))) {
@@ -49,7 +49,7 @@ class LineExpressionConverter {
             }
         }
         try {
-            return ArithmeticOperator.valueOf(operator.toString().toUpperCase());
+            return Operator.valueOf(operator.toString().toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Invalid operator: " + operator);
         }
@@ -57,6 +57,12 @@ class LineExpressionConverter {
 
     private static boolean isStartExpression(String expression) {
         return expression.equalsIgnoreCase(startExpressionWord);
+    }
+
+    private static boolean isPartOfNumber(char character) {
+        return Character.isDigit(character) ||
+                character == ',' ||
+                character == '.';
     }
 
 }

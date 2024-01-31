@@ -1,12 +1,5 @@
 package com.storeware.calculator.calculator;
 
-import com.storeware.calculator.core.ArithmeticOperator;
-import com.storeware.calculator.core.CalculatorUtils;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 class CalculatorResourcesUtilsTest {
 

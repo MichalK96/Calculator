@@ -1,4 +1,5 @@
+divide 2
 add 5
-add 5
-add 5
-apply 1
+multiply 4
+SUBTRACT 10
+apply 10.4
