@@ -1,5 +1,10 @@
 package com.storeware.calculator.application.core;
 
+import com.storeware.calculator.application.core.exception.DevideByZeroException;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 enum ArithmeticOperator {
 
     ADD(new AddOperation()),
@@ -13,43 +18,43 @@ enum ArithmeticOperator {
         this.operation = operation;
     }
 
-    public double performOperation(double a, double b) {
+    public BigDecimal performOperation(BigDecimal a, BigDecimal b) {
         return operation.performOperation(a, b);
     }
 
     private interface Operation {
-        double performOperation(double a, double b);
+        BigDecimal performOperation(BigDecimal a, BigDecimal b);
     }
 
     private static class AddOperation implements Operation {
         @Override
-        public double performOperation(double a, double b) {
-            return a + b;
+        public BigDecimal performOperation(BigDecimal a, BigDecimal b) {
+            return a.add(b);
         }
 
     }
 
     private static class MultiplyOperation implements Operation {
         @Override
-        public double performOperation(double a, double b) {
-            return a * b;
+        public BigDecimal performOperation(BigDecimal a, BigDecimal b) {
+            return a.multiply(b);
         }
     }
 
     private static class SubtractOperation implements Operation {
         @Override
-        public double performOperation(double a, double b) {
-            return a - b;
+        public BigDecimal performOperation(BigDecimal a, BigDecimal b) {
+            return a.subtract(b);
         }
     }
 
     private static class DevideOperation implements Operation {
         @Override
-        public double performOperation(double a, double b) {
-            if (b == 0) {
-                throw new IllegalArgumentException("Cannot divide by zero");
+        public BigDecimal performOperation(BigDecimal a, BigDecimal b) {
+            if (b.compareTo(BigDecimal.ZERO) == 0) {
+                throw new DevideByZeroException("You can not divide by zero");
             }
-            return a / b;
+            return a.divide(b, 10, RoundingMode.HALF_UP);   // TODO move scale and RoundingMode to calculator configuration
         }
     }
 }

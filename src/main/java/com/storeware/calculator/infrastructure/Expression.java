@@ -3,11 +3,13 @@ package com.storeware.calculator.infrastructure;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Builder
 public class Expression {
 
-    private final double number;
+    private final BigDecimal number;
     private final Operator operator;
 
     public boolean isStartExpression() {

@@ -1,24 +1,23 @@
 package com.storeware.calculator.application.core;
 
 import com.storeware.calculator.infrastructure.Expression;
-import com.sun.jdi.connect.Connector;
 
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Objects;
 
 class CalculationHandler {
 
-    double count(List<Expression> inputData) {
-        double result = getFirstNumber(inputData);
+    BigDecimal count(List<Expression> inputData) {
+        var result = getFirstNumber(inputData);
         for (Expression expression : inputData) {
             if (!expression.isStartExpression()) {
                 result = ArithmeticOperator.valueOf(expression.getOperator().name()).performOperation(result, expression.getNumber());
             }
         }
-        return result;
+        return result.stripTrailingZeros();
     }
 
-    private double getFirstNumber(List<Expression> inputData) {
+    private BigDecimal getFirstNumber(List<Expression> inputData) {
         var startValue = inputData.stream()
                 .filter(Expression::isStartExpression)
                 .findAny();
@@ -27,5 +26,4 @@ class CalculationHandler {
         }
         throw new IllegalArgumentException("No start expression found");
     }
-
 }

@@ -3,6 +3,8 @@ package com.storeware.calculator.infrastructure.input;
 import com.storeware.calculator.infrastructure.Expression;
 import com.storeware.calculator.infrastructure.Operator;
 
+import java.math.BigDecimal;
+
 class LineExpressionConverter {
 
     private static final String startExpressionWord = "apply";
@@ -18,7 +20,7 @@ class LineExpressionConverter {
                 .build();
     }
 
-    private static double getNumber(String expression) {
+    private static BigDecimal getNumber(String expression) {
         StringBuilder output = new StringBuilder();
         for (int i = expression.length() - 1;i >= 0; i--) {
             if (isPartOfNumber(expression.charAt(i))) {
@@ -31,7 +33,7 @@ class LineExpressionConverter {
             }
         }
         output.reverse();
-        return Double.parseDouble(String.valueOf(output));
+        return new BigDecimal(String.valueOf(output));
     }
 
     private static Operator getOperator(String expression) {
