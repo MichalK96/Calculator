@@ -5,7 +5,7 @@ public class ConsolePrinter {
     public static final String RESET = "\033[0m";
 
     public static final String GREEN_BRIGHT = "\033[0;92m";
-    public static final String YELLOW_BRIGHT = "\033[1;93M";
+    public static final String YELLOW_BRIGHT = "\033[1;93m";
     public static final String RED_BOLD = "\033[1;31m";
 
     private void ConsolePrinter() {}

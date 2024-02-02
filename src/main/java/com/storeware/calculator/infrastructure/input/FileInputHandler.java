@@ -4,6 +4,7 @@ import com.storeware.calculator.util.ConsolePrinter;
 import com.storeware.calculator.util.ConsoleReader;
 import com.storeware.calculator.infrastructure.Expression;
 import com.storeware.calculator.application.port.in.InputStrategy;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Getter
 public class FileInputHandler implements InputStrategy {
 
-    final String fileName = "input.txt";
+    String filePath = "input.txt";
 
     private List<Expression> readFile() {
         List<Expression> mathematicalOperations = new ArrayList<>();
@@ -25,26 +27,19 @@ public class FileInputHandler implements InputStrategy {
             ConsolePrinter.printError("An error occurred, file not found");
             e.printStackTrace();
         }
-//        if (!containsStartExpression(mathematicalOperations)) {
-//            throw new IllegalArgumentException("Provide correct end of statement");
-//        }
         return mathematicalOperations;
     }
 
     private String provideFilePath() {
         ConsolePrinter.printInfo("Do you want to use the default file? (y/n)");
         if (ConsoleReader.consoleReadString().equals("y")) {
-            return fileName;
+            return filePath;
         } else {
             ConsolePrinter.printInfo("Provide file path");
-            return ConsoleReader.consoleReadString();
+            filePath = ConsoleReader.consoleReadString();
+            return filePath;
         }
     }
-
-//    private boolean containsStartExpression(List<Expression> operations) {
-//        return operations.stream()
-//                .anyMatch(Expression::isStartExpression);
-//    }
 
     @Override
     public List<Expression> readInput() {

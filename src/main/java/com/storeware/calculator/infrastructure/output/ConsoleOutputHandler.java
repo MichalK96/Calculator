@@ -5,10 +5,10 @@ import com.storeware.calculator.util.ConsolePrinter;
 
 import java.math.BigDecimal;
 
-public class ConsoleMessageOutputHandler implements OutputStrategy {
+public class ConsoleOutputHandler implements OutputStrategy {
 
     @Override
-    public void handleResult(BigDecimal result) {
-        ConsolePrinter.printInfo(String.valueOf(result));
+    public void handleResult(BigDecimal result, String filePath) {
+        ConsolePrinter.printWarn(String.format("\nResult: %s\n", result));
     }
 }

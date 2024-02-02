@@ -1,4 +1,4 @@
-package com.storeware.calculator;
+package com.storeware.calculator.configuration;
 
 import com.storeware.calculator.application.port.in.InputStrategy;
 import com.storeware.calculator.application.port.out.OutputStrategy;
@@ -10,32 +10,32 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Builder(access = AccessLevel.PRIVATE)
 @Getter
-public class CalculatorResources {
+public class CalculatorConfigurations {
 
     private final InputStrategy inputHandler;
     private final OutputStrategy outputHandler;
 
-    public static CalculatorResourcesFactory factory() {
-        return new CalculatorResourcesFactory();
+    public static CalculatorConfigurationFactory factory() {
+        return new CalculatorConfigurationFactory();
     }
 
-    static class CalculatorResourcesFactory {
+    public static class CalculatorConfigurationFactory {
 
         private InputStrategy inputStrategy;
         private OutputStrategy outputStrategy;
 
-        public CalculatorResourcesFactory inputStrategy(InputStrategy inputStrategy) {
+        public CalculatorConfigurationFactory inputStrategy(InputStrategy inputStrategy) {
             this.inputStrategy = inputStrategy;
             return this;
         }
 
-        public CalculatorResourcesFactory outputStrategy(OutputStrategy outputStrategy) {
+        public CalculatorConfigurationFactory outputStrategy(OutputStrategy outputStrategy) {
             this.outputStrategy = outputStrategy;
             return this;
         }
 
-        public CalculatorResources build() {
-            return CalculatorResources.builder()
+        public CalculatorConfigurations build() {
+            return CalculatorConfigurations.builder()
                     .inputHandler(inputStrategy)
                     .outputHandler(outputStrategy)
                     .build();

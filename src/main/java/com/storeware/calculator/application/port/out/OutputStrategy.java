@@ -4,6 +4,6 @@ import java.math.BigDecimal;
 
 public interface OutputStrategy {
 
-    public void handleResult(BigDecimal result);
+    public void handleResult(BigDecimal result, String filePath);
 
 }

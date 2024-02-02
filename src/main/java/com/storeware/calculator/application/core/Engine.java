@@ -1,6 +1,7 @@
 package com.storeware.calculator.application.core;
 
-import com.storeware.calculator.CalculatorResources;
+import com.storeware.calculator.configuration.CalculatorConfigurations;
+import com.storeware.calculator.application.core.exception.InvalidQuantityApplyOperatorException;
 import com.storeware.calculator.infrastructure.Expression;
 
 import java.util.List;
@@ -10,28 +11,31 @@ public class Engine {
 
     private final CalculationHandler calculationHandler = new CalculationHandler();
 
-    private final CalculatorResources resources;
+    private final CalculatorConfigurations config;
     private List<Expression> inputData;
 
-    public Engine(CalculatorResources resources) {
-        this.resources = resources;
+    public Engine(CalculatorConfigurations config) {
+        this.config = config;
     }
 
     public void run() {
-        inputData = resources.getInputHandler().readInput();
+        inputData = config.getInputHandler().readInput();
         validateInputData();
 
         var result = calculationHandler.count(inputData);
-        resources.getOutputHandler().handleResult(result);
+        config.getOutputHandler().handleResult(result, config.getInputHandler().getFilePath());
     }
 
     private void validateInputData() {
         Objects.requireNonNull(inputData, "No data provided");
+        if (inputData.isEmpty()) {
+            throw new IllegalArgumentException("Empty expressions list");
+        }
         var numStartExpression = inputData.stream()
                 .filter(Expression::isStartExpression)
                 .count();
         if (numStartExpression != 1) {
-            throw new IllegalArgumentException("Number of apply form is different than one");
+            throw new InvalidQuantityApplyOperatorException("Number of apply form is different than one");
         }
     }
 

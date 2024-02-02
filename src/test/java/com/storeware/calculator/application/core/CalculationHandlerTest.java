@@ -1,6 +1,6 @@
 package com.storeware.calculator.application.core;
 
-import com.storeware.calculator.application.core.exception.DevideByZeroException;
+import com.storeware.calculator.application.core.exception.DivideByZeroException;
 import com.storeware.calculator.infrastructure.Expression;
 import com.storeware.calculator.infrastructure.Operator;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,8 +27,8 @@ class CalculationHandlerTest {
         //Given
         var expected = "15";
         var expressions = List.of(
-                generateExpression("10", Operator.ADD),
-                generateExpression("5", Operator.APPLY)
+                buildExpression("10", Operator.ADD),
+                buildExpression("5", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -43,11 +43,11 @@ class CalculationHandlerTest {
         var expected = "26";
 
         var expressions = List.of(
-                generateExpression("10", Operator.ADD),
-                generateExpression("1", Operator.ADD),
-                generateExpression("5", Operator.ADD),
-                generateExpression("4", Operator.ADD),
-                generateExpression("6", Operator.APPLY)
+                buildExpression("10", Operator.ADD),
+                buildExpression("1", Operator.ADD),
+                buildExpression("5", Operator.ADD),
+                buildExpression("4", Operator.ADD),
+                buildExpression("6", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -61,11 +61,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "28.1";
         var expressions = List.of(
-                generateExpression("10.75", Operator.ADD),
-                generateExpression("1.2", Operator.ADD),
-                generateExpression("5.400", Operator.ADD),
-                generateExpression("4.25", Operator.ADD),
-                generateExpression("6.5", Operator.APPLY)
+                buildExpression("10.75", Operator.ADD),
+                buildExpression("1.2", Operator.ADD),
+                buildExpression("5.400", Operator.ADD),
+                buildExpression("4.25", Operator.ADD),
+                buildExpression("6.5", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -79,8 +79,8 @@ class CalculationHandlerTest {
         //Given
         var expected = "10";
         var expressions = List.of(
-                generateExpression("5", Operator.SUBTRACT),
-                generateExpression("15", Operator.APPLY)
+                buildExpression("5", Operator.SUBTRACT),
+                buildExpression("15", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -94,11 +94,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "375";
         var expressions = List.of(
-                generateExpression("5",  Operator.SUBTRACT),
-                generateExpression("10",  Operator.SUBTRACT),
-                generateExpression("7",  Operator.SUBTRACT),
-                generateExpression("3",  Operator.SUBTRACT),
-                generateExpression("400", Operator.APPLY)
+                buildExpression("5",  Operator.SUBTRACT),
+                buildExpression("10",  Operator.SUBTRACT),
+                buildExpression("7",  Operator.SUBTRACT),
+                buildExpression("3",  Operator.SUBTRACT),
+                buildExpression("400", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -112,11 +112,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "222.7";
         var expressions = List.of(
-                generateExpression("5.5", Operator.SUBTRACT),
-                generateExpression("11.2", Operator.SUBTRACT),
-                generateExpression("7.7", Operator.SUBTRACT),
-                generateExpression("3.2", Operator.SUBTRACT),
-                generateExpression("250.3", Operator.APPLY)
+                buildExpression("5.5", Operator.SUBTRACT),
+                buildExpression("11.2", Operator.SUBTRACT),
+                buildExpression("7.7", Operator.SUBTRACT),
+                buildExpression("3.2", Operator.SUBTRACT),
+                buildExpression("250.3", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -131,8 +131,8 @@ class CalculationHandlerTest {
         //Given
         var expected = "25";
         var expressions = List.of(
-                generateExpression("5", Operator.MULTIPLY),
-                generateExpression("5", Operator.APPLY)
+                buildExpression("5", Operator.MULTIPLY),
+                buildExpression("5", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -146,11 +146,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "400";
         var expressions = List.of(
-                generateExpression("10", Operator.MULTIPLY),
-                generateExpression("2", Operator.MULTIPLY),
-                generateExpression("4", Operator.MULTIPLY),
-                generateExpression("1", Operator.MULTIPLY),
-                generateExpression("5", Operator.APPLY)
+                buildExpression("10", Operator.MULTIPLY),
+                buildExpression("2", Operator.MULTIPLY),
+                buildExpression("4", Operator.MULTIPLY),
+                buildExpression("1", Operator.MULTIPLY),
+                buildExpression("5", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -164,11 +164,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "719.8191";
         var expressions = List.of(
-                generateExpression("10.2", Operator.MULTIPLY),
-                generateExpression("2.1", Operator.MULTIPLY),
-                generateExpression("4.7", Operator.MULTIPLY),
-                generateExpression("1.3", Operator.MULTIPLY),
-                generateExpression("5.5", Operator.APPLY)
+                buildExpression("10.2", Operator.MULTIPLY),
+                buildExpression("2.1", Operator.MULTIPLY),
+                buildExpression("4.7", Operator.MULTIPLY),
+                buildExpression("1.3", Operator.MULTIPLY),
+                buildExpression("5.5", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -182,8 +182,8 @@ class CalculationHandlerTest {
         //Given
         var expected = "5";
         var expressions = List.of(
-                generateExpression("4", Operator.DIVIDE),
-                generateExpression("20", Operator.APPLY)
+                buildExpression("4", Operator.DIVIDE),
+                buildExpression("20", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -197,11 +197,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "2";
         var expressions = List.of(
-                generateExpression("2", Operator.DIVIDE),
-                generateExpression("5", Operator.DIVIDE),
-                generateExpression("10", Operator.DIVIDE),
-                generateExpression("1", Operator.DIVIDE),
-                generateExpression("200", Operator.APPLY)
+                buildExpression("2", Operator.DIVIDE),
+                buildExpression("5", Operator.DIVIDE),
+                buildExpression("10", Operator.DIVIDE),
+                buildExpression("1", Operator.DIVIDE),
+                buildExpression("200", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -215,11 +215,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "1.16148456950";
         var expressions = List.of(
-                generateExpression("2.5", Operator.DIVIDE),
-                generateExpression("5.7", Operator.DIVIDE),
-                generateExpression("10.1", Operator.DIVIDE),
-                generateExpression("1.2", Operator.DIVIDE),
-                generateExpression("200.6", Operator.APPLY)
+                buildExpression("2.5", Operator.DIVIDE),
+                buildExpression("5.7", Operator.DIVIDE),
+                buildExpression("10.1", Operator.DIVIDE),
+                buildExpression("1.2", Operator.DIVIDE),
+                buildExpression("200.6", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -232,13 +232,13 @@ class CalculationHandlerTest {
     void when_divideBy0_then_throwException() {
         //Given
         var expressions = List.of(
-                generateExpression("0", Operator.DIVIDE),
-                generateExpression("20", Operator.APPLY)
+                buildExpression("0", Operator.DIVIDE),
+                buildExpression("20", Operator.APPLY)
         );
         //When
         var exception = catchException(() -> calculationHandler.count(expressions));
         //Then
-        assertThat(exception).isInstanceOf(DevideByZeroException.class);
+        assertThat(exception).isInstanceOf(DivideByZeroException.class);
         assertThat(exception.getMessage()).containsIgnoringCase("zero");
     }
 
@@ -248,11 +248,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "101";
         var expressions = List.of(
-                generateExpression("150", Operator.SUBTRACT),
-                generateExpression("2", Operator.DIVIDE),
-                generateExpression("4", Operator.MULTIPLY),
-                generateExpression("1", Operator.ADD),
-                generateExpression("200", Operator.APPLY)
+                buildExpression("150", Operator.SUBTRACT),
+                buildExpression("2", Operator.DIVIDE),
+                buildExpression("4", Operator.MULTIPLY),
+                buildExpression("1", Operator.ADD),
+                buildExpression("200", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -266,11 +266,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "5.5";
         var expressions = List.of(
-                generateExpression("4", Operator.MULTIPLY),
-                generateExpression("2.2", Operator.DIVIDE),
-                generateExpression("4.75", Operator.SUBTRACT),
-                generateExpression("0.25", Operator.ADD),
-                generateExpression("5.5", Operator.APPLY)
+                buildExpression("4", Operator.MULTIPLY),
+                buildExpression("2.2", Operator.DIVIDE),
+                buildExpression("4.75", Operator.SUBTRACT),
+                buildExpression("0.25", Operator.ADD),
+                buildExpression("5.5", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -284,11 +284,11 @@ class CalculationHandlerTest {
         //Given
         var expected = "2438877";
         var expressions = List.of(
-                generateExpression("10", Operator.MULTIPLY),
-                generateExpression("5", Operator.DIVIDE),
-                generateExpression("5453664", Operator.ADD),
-                generateExpression("4585677", Operator.SUBTRACT),
-                generateExpression("785445", Operator.APPLY)
+                buildExpression("10", Operator.MULTIPLY),
+                buildExpression("5", Operator.DIVIDE),
+                buildExpression("5453664", Operator.ADD),
+                buildExpression("4585677", Operator.SUBTRACT),
+                buildExpression("785445", Operator.APPLY)
         );
         //When
         var result = calculationHandler.count(expressions);
@@ -296,7 +296,35 @@ class CalculationHandlerTest {
         assertThat(result).isEqualByComparingTo(expected);
     }
 
-    private Expression generateExpression(String number, Operator operator) {
+    @Test
+    @DisplayName("When only apply expression then return result")
+    void when_onlyApplyExpression_then_returnResult() {
+        //Given
+        var expected = "2438877";
+        var expressions = List.of(
+                buildExpression(expected, Operator.APPLY)
+        );
+        //When
+        var result = calculationHandler.count(expressions);
+        //Then
+        assertThat(result).isEqualByComparingTo(expected);
+    }
+
+    @Test
+    @DisplayName("When no operator then return exception")
+    void when_noOperator_then_throwException() {
+        //Given
+        var expected = NullPointerException.class;
+        var expressions = List.of(
+                buildExpression("10", null)
+        );
+        //When
+        var exception = catchException(() -> calculationHandler.count(expressions));
+        //Then
+        assertThat(exception).isInstanceOf(expected);
+    }
+
+    private Expression buildExpression(String number, Operator operator) {
         return Expression.builder()
                 .number(new BigDecimal(number))
                 .operator(operator)

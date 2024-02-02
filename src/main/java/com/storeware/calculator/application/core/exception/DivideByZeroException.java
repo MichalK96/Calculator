@@ -1,12 +1,12 @@
 package com.storeware.calculator.application.core.exception;
 
-public class DevideByZeroException extends RuntimeException {
+public class DivideByZeroException extends RuntimeException {
 
-    public DevideByZeroException() {
+    public DivideByZeroException() {
         super("Division by zero is not allowed");
     }
 
-    public DevideByZeroException(String message) {
+    public DivideByZeroException(String message) {
         super(message);
     }
 }

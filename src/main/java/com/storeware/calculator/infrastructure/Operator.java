@@ -5,5 +5,5 @@ public enum Operator {
     SUBTRACT(),
     MULTIPLY(),
     DIVIDE(),
-    APPLY();
+    APPLY()
 }
