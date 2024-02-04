@@ -35,7 +35,7 @@ public class Main {
                     
                     use APPLY with first number to start sequence (apply 10.5)
                     add another operators with numbers to your calculations (divide 2)
-                    when to finish provide done (not required for txt files)
+                    when you finish provide done (not required for txt files)
                     """);
         }
     }
