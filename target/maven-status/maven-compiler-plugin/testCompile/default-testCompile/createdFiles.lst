@@ -1,2 +1,8 @@
-com\storeware\calculator\calculator\CalculatorUtilsTest.class
-com\storeware\calculator\calculator\CalculatorTest.class
+com\michal\calculator\calculator\CalculatorResourcesTest.class
+com\michal\calculator\application\core\StreamTests.class
+com\michal\calculator\application\core\FakeInputHandler.class
+com\michal\calculator\application\core\CalculationHandlerTest.class
+com\michal\calculator\application\core\EngineTest.class
+com\michal\calculator\application\core\FakeOutputHandler.class
+com\michal\calculator\infrastructure\input\LineExpressionConverterTest.class
+com\michal\calculator\calculator\CalculatorResourcesUtilsTest.class

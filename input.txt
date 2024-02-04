@@ -1,5 +1,5 @@
+apply 10.4
 divide 2
 add 5
 multiply 4
 SUBTRACT 10
-apply 10.4
