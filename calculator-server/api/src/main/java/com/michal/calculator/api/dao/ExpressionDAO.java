@@ -1,5 +1,6 @@
 package com.michal.calculator.api.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.michal.calculator.api.enums.Operator;
 import jakarta.persistence.*;
@@ -15,11 +16,10 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "expression")
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExpressionDAO {
 
     @Id
@@ -31,5 +31,8 @@ public class ExpressionDAO {
     private UUID id;
     private BigDecimal number;
     private Operator operator;
-    private UUID mathOperationId;
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "math_operation_id")
+    private MathOperationDAO mathOperation;
 }

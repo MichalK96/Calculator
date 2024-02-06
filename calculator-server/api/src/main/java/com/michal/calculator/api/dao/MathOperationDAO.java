@@ -1,10 +1,9 @@
 package com.michal.calculator.api.dao;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "math_operation")
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -29,7 +28,8 @@ public class MathOperationDAO {
     private UUID id;
     private String userId;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "mathOperation", cascade = CascadeType.ALL)
     private Set<ExpressionDAO> expressions;
 }
 
