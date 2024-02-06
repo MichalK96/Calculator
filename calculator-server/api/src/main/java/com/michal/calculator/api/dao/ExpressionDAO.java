@@ -1,6 +1,7 @@
 package com.michal.calculator.api.dao;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.michal.calculator.api.enums.Operator;
 import jakarta.persistence.*;
@@ -23,6 +24,7 @@ import java.util.UUID;
 public class ExpressionDAO {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",

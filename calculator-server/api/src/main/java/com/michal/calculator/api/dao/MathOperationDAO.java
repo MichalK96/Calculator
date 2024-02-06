@@ -1,5 +1,6 @@
 package com.michal.calculator.api.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -20,6 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class MathOperationDAO {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",

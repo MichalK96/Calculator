@@ -2,6 +2,7 @@ package com.michal.calculator.configuration;
 
 import com.michal.calculator.application.port.in.InputStrategy;
 import com.michal.calculator.application.port.out.OutputStrategy;
+import com.michal.calculator.infrastructure.input.api.ApiInputHandler;
 import com.michal.calculator.infrastructure.input.ConsoleInputHandler;
 import com.michal.calculator.infrastructure.input.FileInputHandler;
 import com.michal.calculator.infrastructure.output.ConsoleFileOutputHandler;
@@ -15,11 +16,12 @@ public class ConfigurationHandler {
     private ConfigurationHandler() {}
 
     public static InputStrategy setInputStrategy() {
-        ConsolePrinter.printInfo("Select data source\n1 File\n2 Enter manually ");
+        ConsolePrinter.printInfo("Select data source\n1 File\n2 Enter manually\n3 Fetch from API ");
         var userInput = ConsoleReader.consoleReadString();
         return switch (userInput) {
             case "1" -> new FileInputHandler();
             case "2" -> new ConsoleInputHandler();
+            case "3" -> new ApiInputHandler();
             default -> {
                 ConsolePrinter.printWarn("Provide correct value");
                 yield setInputStrategy();
