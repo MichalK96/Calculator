@@ -5,6 +5,7 @@ import com.michal.calculator.util.ConsoleReader;
 import com.michal.calculator.infrastructure.Expression;
 import com.michal.calculator.application.port.in.InputStrategy;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,14 +16,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Getter
+@Setter
 public class FileInputHandler implements InputStrategy {
 
-    String filePath = "input.txt";
-    String lineForm = "\\w+\\s[\\d.,]+";
+    private String filePath;
+    private final String lineForm = "\\w+\\s[\\d.,]+";
+
+    @Override
+    public List<Expression> readInput() {
+        return readFile();
+    }
 
     private List<Expression> readFile() {
         List<Expression> mathematicalOperations = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File(provideFilePath()))){
+        try (Scanner scanner = new Scanner(new File(filePath))){
             while (scanner.hasNextLine()) {
                 var line = scanner.nextLine();
                 if (!isLineValid(line)) {
@@ -37,26 +44,10 @@ public class FileInputHandler implements InputStrategy {
         return mathematicalOperations;
     }
 
-    private String provideFilePath() {
-        ConsolePrinter.printInfo("Do you want to use the default file? (y/n)");
-        if (ConsoleReader.consoleReadString().equals("y")) {
-            return filePath;
-        } else {
-            ConsolePrinter.printInfo("Provide file path");
-            filePath = ConsoleReader.consoleReadString();
-            return filePath;
-        }
-    }
-
     private boolean isLineValid(String line) {
         Pattern pattern = Pattern.compile(lineForm);
         Matcher matcher = pattern.matcher(line);
         return matcher.matches();
-    }
-
-    @Override
-    public List<Expression> readInput() {
-        return readFile();
     }
 
 

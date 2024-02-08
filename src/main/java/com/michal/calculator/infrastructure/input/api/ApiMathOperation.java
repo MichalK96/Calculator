@@ -1,14 +1,17 @@
 package com.michal.calculator.infrastructure.input.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.michal.calculator.infrastructure.Expression;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
-public class ApiMathOperation {
+@Getter
+@Setter
+class ApiMathOperation {
 
     private String userId;
     private String name;
-    private Set<ApiExpression> expressions;
+    private List<Expression> expressions;
 
 }

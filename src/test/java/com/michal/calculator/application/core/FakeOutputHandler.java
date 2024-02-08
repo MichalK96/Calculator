@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.math.BigDecimal;
 
 @Getter
-public class FakeOutputHandler implements OutputStrategy {
+class FakeOutputHandler implements OutputStrategy {
 
     public String result;
 

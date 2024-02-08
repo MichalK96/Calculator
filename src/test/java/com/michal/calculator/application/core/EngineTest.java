@@ -2,6 +2,7 @@ package com.michal.calculator.application.core;
 
 import com.michal.calculator.configuration.CalculatorConfigurations;
 import com.michal.calculator.application.core.exception.InvalidQuantityApplyOperatorException;
+import com.michal.calculator.configuration.Properties;
 import com.michal.calculator.infrastructure.Expression;
 import com.michal.calculator.infrastructure.Operator;
 import org.junit.jupiter.api.BeforeEach;
@@ -103,7 +104,8 @@ class EngineTest {
 
     private void prepareEngine(List<Expression> expressions) {
         var inputHandler = new FakeInputHandler(expressions);
-        var resources = new CalculatorConfigurations(inputHandler, outputHandler);
+//        var resources = new CalculatorConfigurations(inputHandler, outputHandler);
+        var resources = new CalculatorConfigurations(inputHandler, outputHandler, new Properties());
         engine = new  Engine(resources);
     }
 

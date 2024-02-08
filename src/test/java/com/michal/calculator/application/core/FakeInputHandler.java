@@ -9,7 +9,7 @@ import java.util.List;
 
 @Setter
 @AllArgsConstructor
-public class FakeInputHandler implements InputStrategy {
+class FakeInputHandler implements InputStrategy {
 
     List<Expression> input;
 

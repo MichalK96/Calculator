@@ -14,7 +14,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "math_operation")
-//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -28,10 +27,11 @@ public class MathOperationDAO {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
+    @Column(unique = true)
     private String userId;
     private String name;
     @JsonManagedReference
     @OneToMany(mappedBy = "mathOperation", cascade = CascadeType.ALL)
-    private Set<ExpressionDAO> expressions;
+    private List<ExpressionDAO> expressions;
 }
 

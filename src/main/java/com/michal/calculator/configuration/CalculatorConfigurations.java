@@ -14,6 +14,7 @@ public class CalculatorConfigurations {
 
     private final InputStrategy inputHandler;
     private final OutputStrategy outputHandler;
+    private final Properties properties;
 
     public static CalculatorConfigurationFactory factory() {
         return new CalculatorConfigurationFactory();
@@ -23,14 +24,20 @@ public class CalculatorConfigurations {
 
         private InputStrategy inputStrategy;
         private OutputStrategy outputStrategy;
+        private Properties properties;
 
-        public CalculatorConfigurationFactory inputStrategy(InputStrategy inputStrategy) {
-            this.inputStrategy = inputStrategy;
+        public CalculatorConfigurationFactory properties(Properties properties) {
+            this.properties = properties;
             return this;
         }
 
-        public CalculatorConfigurationFactory outputStrategy(OutputStrategy outputStrategy) {
-            this.outputStrategy = outputStrategy;
+        public CalculatorConfigurationFactory generateInputStrategy() {
+            this.inputStrategy = properties.getInputType().getInputStrategy();
+            return this;
+        }
+
+        public CalculatorConfigurationFactory generateOutputStrategy() {
+            this.outputStrategy = properties.getOutputType().getOutputStrategy();
             return this;
         }
 

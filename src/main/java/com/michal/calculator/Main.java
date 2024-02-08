@@ -12,8 +12,9 @@ public class Main {
         displayManual();
 
         var calculatorConfiguration = CalculatorConfigurations.factory()
-                .inputStrategy(ConfigurationHandler.setInputStrategy())
-                .outputStrategy(ConfigurationHandler.setOutputStrategy())
+                .properties(ConfigurationHandler.setProperties())
+                .generateInputStrategy()
+                .generateOutputStrategy()
                 .build();
         var engine = new Engine(calculatorConfiguration);
 
