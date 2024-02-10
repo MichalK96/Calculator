@@ -11,7 +11,7 @@ class FakeOutputHandler implements OutputStrategy {
     public String result;
 
     @Override
-    public void handleResult(String result, String filePath) {
+    public void handleResult(String result) {
         this.result = result;
     }
 }

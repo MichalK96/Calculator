@@ -2,14 +2,16 @@ package com.michal.calculator.infrastructure.input.api;
 
 import com.michal.calculator.application.port.in.InputStrategy;
 import com.michal.calculator.infrastructure.Expression;
+import lombok.Setter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+@Setter
 public class ApiInputHandler implements InputStrategy {
 
     private final RestTemplate restTemplate = new RestTemplate();
-    private final String host = "localhost";
+    private String host;
 
     @Override
     public List<Expression> readInput() {

@@ -1,6 +1,6 @@
 package com.michal.calculator.application.core;
 
-import com.michal.calculator.configuration.CalculatorConfigurations;
+import com.michal.calculator.configuration.CalculatorConfiguration;
 import com.michal.calculator.application.core.exception.InvalidQuantityApplyOperatorException;
 import com.michal.calculator.infrastructure.Expression;
 
@@ -11,10 +11,10 @@ public class Engine {
 
     private final CalculationHandler calculationHandler = new CalculationHandler();
 
-    private final CalculatorConfigurations config;
+    private final CalculatorConfiguration config;
     private List<Expression> inputData;
 
-    public Engine(CalculatorConfigurations config) {
+    public Engine(CalculatorConfiguration config) {
         this.config = config;
     }
 
@@ -23,7 +23,7 @@ public class Engine {
         validateInputData();
 
         var result = calculationHandler.count(inputData).toPlainString();
-        config.getOutputHandler().handleResult(result, config.getInputHandler().getFilePath());
+        config.getOutputHandler().handleResult(result);
     }
 
     private void validateInputData() {

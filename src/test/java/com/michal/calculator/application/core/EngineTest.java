@@ -1,6 +1,6 @@
 package com.michal.calculator.application.core;
 
-import com.michal.calculator.configuration.CalculatorConfigurations;
+import com.michal.calculator.configuration.CalculatorConfiguration;
 import com.michal.calculator.application.core.exception.InvalidQuantityApplyOperatorException;
 import com.michal.calculator.configuration.Properties;
 import com.michal.calculator.infrastructure.Expression;
@@ -105,7 +105,7 @@ class EngineTest {
     private void prepareEngine(List<Expression> expressions) {
         var inputHandler = new FakeInputHandler(expressions);
 //        var resources = new CalculatorConfigurations(inputHandler, outputHandler);
-        var resources = new CalculatorConfigurations(inputHandler, outputHandler, new Properties());
+        var resources = new CalculatorConfiguration(inputHandler, outputHandler, new Properties());
         engine = new  Engine(resources);
     }
 

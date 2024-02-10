@@ -12,8 +12,10 @@ import java.math.BigDecimal;
 @Setter
 public class FileOutputHandler implements OutputStrategy {
 
+    String filePath;
+
     @Override
-    public void handleResult(String result, String filePath) {
+    public void handleResult(String result) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(String.format("\n\nResult: %s", result));
             ConsolePrinter.printInfo("The file has been saved successfully");

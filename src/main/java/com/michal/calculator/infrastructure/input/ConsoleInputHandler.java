@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConsoleInputHandler implements InputStrategy {
+
     @Override
     public List<Expression> readInput() {
         var expressions = new ArrayList<Expression>();

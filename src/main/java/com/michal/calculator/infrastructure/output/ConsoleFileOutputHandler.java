@@ -10,8 +10,13 @@ public class ConsoleFileOutputHandler implements OutputStrategy {
     private final ConsoleOutputHandler consoleOutputHandler = new ConsoleOutputHandler();
 
     @Override
-    public void handleResult(String result, String filePath) {
-        fileOutputHandler.handleResult(result, filePath);
-        consoleOutputHandler.handleResult(result, filePath);
+    public void handleResult(String result) {
+        fileOutputHandler.handleResult(result);
+        consoleOutputHandler.handleResult(result);
     }
+
+    public void setProperties(String filePath) {
+        fileOutputHandler.setFilePath(filePath);
+    }
+
 }

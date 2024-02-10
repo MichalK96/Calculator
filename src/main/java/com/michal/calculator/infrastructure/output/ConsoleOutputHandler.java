@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class ConsoleOutputHandler implements OutputStrategy {
 
     @Override
-    public void handleResult(String result, String filePath) {
+    public void handleResult(String result) {
         ConsolePrinter.printWarn(String.format("\nResult: %s\n", result));
     }
 }

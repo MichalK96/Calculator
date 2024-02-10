@@ -15,7 +15,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Getter
 @Setter
 public class FileInputHandler implements InputStrategy {
 
