@@ -3,3 +3,5 @@ divide 2
 add 5
 multiply 4
 SUBTRACT 10
+
+Result: 30.8

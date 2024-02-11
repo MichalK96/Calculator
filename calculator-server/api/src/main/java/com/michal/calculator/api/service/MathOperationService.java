@@ -17,10 +17,6 @@ public class MathOperationService {
         return mathOperationRepository.findAll();
     }
 
-    public List<MathOperationDAO> getByUserAndName() {
-        return null;
-    }
-
     public MathOperationDAO save(MathOperationDAO mathOperation) {
         mathOperation.getExpressions().forEach(expression -> expression.setMathOperation(mathOperation));
         return mathOperationRepository.save(mathOperation);

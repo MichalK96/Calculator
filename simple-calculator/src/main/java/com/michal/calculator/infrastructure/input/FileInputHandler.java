@@ -1,10 +1,8 @@
 package com.michal.calculator.infrastructure.input;
 
-import com.michal.calculator.util.ConsolePrinter;
-import com.michal.calculator.util.ConsoleReader;
-import com.michal.calculator.infrastructure.Expression;
 import com.michal.calculator.application.port.in.InputStrategy;
-import lombok.Getter;
+import com.michal.calculator.infrastructure.Expression;
+import com.michal.calculator.util.ConsolePrinter;
 import lombok.Setter;
 
 import java.io.File;
@@ -48,7 +46,5 @@ public class FileInputHandler implements InputStrategy {
         Matcher matcher = pattern.matcher(line);
         return matcher.matches();
     }
-
-
 
 }
