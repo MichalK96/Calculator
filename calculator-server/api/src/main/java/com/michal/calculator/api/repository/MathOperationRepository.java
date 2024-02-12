@@ -7,6 +7,6 @@ import java.util.UUID;
 
 public interface MathOperationRepository extends JpaRepository<MathOperationDAO, UUID> {
 
-    MathOperationDAO findByUserIdAndName(String userId, String name);
+    MathOperationDAO findByUserNameAndTitle(String userId, String name);
 
 }

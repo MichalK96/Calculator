@@ -12,6 +12,7 @@ public class Properties {
     private String filePath = "input.txt";
     private String host = "localhost";
     private String userName;
+    private String title;
 
 
 }

@@ -43,6 +43,8 @@ public class CalculatorConfiguration {
                 fileInputStrategy.setFilePath(properties.getFilePath());
             } else if (inputStrategy instanceof ApiInputHandler apiInputHandler) {
                 apiInputHandler.setHost(properties.getHost());
+                apiInputHandler.setUserName(properties.getUserName());
+                apiInputHandler.setTitle(properties.getTitle());
             }
             return this;
         }
@@ -57,6 +59,7 @@ public class CalculatorConfiguration {
             } else if (outputStrategy instanceof ApiOutputHandler apiOutputHandler) {
                 apiOutputHandler.setHost(properties.getHost());
                 apiOutputHandler.setUserName(properties.getUserName());
+                apiOutputHandler.setTitle(properties.getTitle());
             }
             return this;
         }

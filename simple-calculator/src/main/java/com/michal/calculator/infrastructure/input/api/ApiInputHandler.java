@@ -12,11 +12,14 @@ public class ApiInputHandler implements InputStrategy {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private String host;
+    private String userName;
+    private String title;
 
     @Override
     public List<Expression> readInput() {
-        var response = restTemplate.getForObject(String.format("http://%s:8080/api/math-operations", host), ApiMathOperation[].class);
+        var response = restTemplate.getForObject(
+                String.format("http://%s:8080/api/math-operations/%s/%s", host, userName, title), ApiMathOperation.class);
         assert response != null;
-        return response[0].getExpressions();
+        return response.getExpressions();
     }
 }

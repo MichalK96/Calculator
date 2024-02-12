@@ -1,12 +1,10 @@
 package com.michal.calculator.api.dao;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.*;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,18 +18,16 @@ import org.hibernate.annotations.GenericGenerator;
 public class MathOperationDAO {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
     @Column(unique = true)
-    private String userId;
-    private String name;
+    private String userName;
+    private String title;
     @JsonManagedReference
     @OneToMany(mappedBy = "mathOperation", cascade = CascadeType.ALL)
     private List<ExpressionDAO> expressions;
+    @OneToOne(mappedBy = "mathOperation", cascade = CascadeType.ALL)
+    private MathResultDAO mathResult;
 }
 

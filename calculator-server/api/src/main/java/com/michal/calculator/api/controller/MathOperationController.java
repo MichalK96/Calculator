@@ -7,37 +7,43 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/math-operations")
 public class MathOperationController {
 
     @Autowired
     private MathOperationService mathOperationService;
 
-    @GetMapping("/math-operations")
+    @GetMapping()
     public List<MathOperationDAO> getAllMathOperations() {
         return mathOperationService.getAllExpressions();
     }
 
-    @PostMapping("/math-operations")
+    @PostMapping()
     public ResponseEntity<MathOperationDAO> createMathExpression(@RequestBody MathOperationDAO mathOperationDAO) {
-        var savedUserExpressions = mathOperationService.save(mathOperationDAO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedUserExpressions);
+        var savedMathExpressions = mathOperationService.save(mathOperationDAO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedMathExpressions);
     }
 
-    @GetMapping("/math-operations/{userId}/{name}")
-    public ResponseEntity<MathOperationDAO> getMathOperationByUserIdAndName(
-            @PathVariable String userId,
-            @PathVariable String name) {
-
+    @GetMapping("/{userId}/{name}")
+    public ResponseEntity<MathOperationDAO> getMathOperationByUserIdAndName(@PathVariable String userId, @PathVariable String name) {
         var mathOperation = mathOperationService.getMathOperationByUserIdAndName(userId, name);
 
         if (mathOperation != null) {
             return ResponseEntity.ok(mathOperation);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/save-result/{userName}/{title}")
+    public ResponseEntity<MathOperationDAO> saveResult(@PathVariable String userName, @PathVariable String title,
+                                                       @RequestBody String result) {
+        var updatedMathOperation = mathOperationService.saveResult(result, userName, title);
+        return ResponseEntity.ok(updatedMathOperation);
     }
 
 }

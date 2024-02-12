@@ -5,13 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 class ApiMathOperation {
 
-    private String userId;
-    private String name;
+    private UUID id;
+    private String userName;
+    private String title;
     private List<Expression> expressions;
 
 }

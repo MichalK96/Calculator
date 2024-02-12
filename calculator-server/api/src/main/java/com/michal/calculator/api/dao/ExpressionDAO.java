@@ -14,19 +14,14 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "expression")
-//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class ExpressionDAO {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
     private BigDecimal number;
     private Operator operator;

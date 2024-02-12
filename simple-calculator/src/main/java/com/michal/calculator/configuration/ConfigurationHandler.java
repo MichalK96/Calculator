@@ -56,8 +56,7 @@ public class ConfigurationHandler {
     }
 
     private static void setApiOutputProperties() {
-        ConsolePrinter.printWarn("In future release ;)");
-//        properties.getOutputType().add(AdapterType.API);      // TODO
+        properties.setOutputType(OutputType.API);
     }
 
     private static void setInputProperties() {
@@ -98,6 +97,7 @@ public class ConfigurationHandler {
             properties.setHost(getHost());
         }
         properties.setUserName(ConsoleUtil.getUserInput("Provide user name"));
+        properties.setTitle(ConsoleUtil.getUserInput("Math expression title"));
     }
 
     private static String getHost() {
@@ -114,38 +114,5 @@ public class ConfigurationHandler {
         var matcher = pattern.matcher(host);
         return matcher.matches();
     }
-
-//    public static InputStrategy setInputStrategy() {
-//        ConsolePrinter.printInfo("Select data source\n1 File\n2 Enter manually\n3 Fetch from API ");
-//        var userInput = ConsoleReader.consoleReadString();
-//        return switch (userInput) {
-//            case "1" -> new FileInputHandler();
-//            case "2" -> new ConsoleInputHandler();
-//            case "3" -> new ApiInputHandler();
-//            default -> {
-//                ConsolePrinter.printWarn("Provide correct value");
-//                yield setInputStrategy();
-//            }
-//        };
-//    }
-
-//    public static OutputStrategy setOutputStrategy() {
-//        ConsolePrinter.printInfo("""
-//                Where result should be placed
-//                1 File
-//                2 Console
-//                3 File and console
-//                """);
-//        var userInput = ConsoleReader.consoleReadString();
-//        return switch (userInput) {
-//            case "1" -> new FileOutputHandler();
-//            case "2" -> new ConsoleOutputHandler();
-//            case "3" -> new ConsoleFileOutputHandler();
-//            default -> {
-//                ConsolePrinter.printWarn("Provide correct value");
-//                yield setOutputStrategy();
-//            }
-//        };
-//    }
 
 }

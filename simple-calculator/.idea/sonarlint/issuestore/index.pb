@@ -13,3 +13,17 @@ p
 @src/main/java/com/michal/calculator/application/core/Engine.java,e\b\ebd4117e08f194f8b51240b8a2ad493eb5dc84e5
 |
 Lsrc/main/java/com/michal/calculator/application/core/CalculationHandler.java,8\1\810ef4d0b8287094cacd11dcd52c15bf394e9a67
+
+Osrc/main/java/com/michal/calculator/infrastructure/output/ApiOutputHandler.java,4\9\49701beff5b2858901b8bc07d6054a71b516a2b8
+Å
+Qsrc/main/java/com/michal/calculator/infrastructure/input/api/ApiInputHandler.java,a\1\a138c19333ea39a205fa690aeb97d0a08fc05c95
+Ç
+Rsrc/main/java/com/michal/calculator/infrastructure/input/api/ApiMathOperation.java,8\d\8d3e478cada46b0b199a81469b765f917aeb5e8b
+{
+Ksrc/main/java/com/michal/calculator/configuration/ConfigurationHandler.java,d\4\d47fd188fc423997c01b06b7ffb94be628519c9c
+~
+Nsrc/main/java/com/michal/calculator/configuration/CalculatorConfiguration.java,f\c\fc4daa327c2428c629c21386c76c5bba69d8ca7b
+q
+Asrc/main/java/com/michal/calculator/configuration/Properties.java,9\c\9cc462c8257a767c485fa3ea9bb5117245f01e89
+|
+Lsrc/main/java/com/michal/calculator/application/port/out/OutputStrategy.java,1\f\1fa7c3a9699820af358117c004298fc017bc5105
