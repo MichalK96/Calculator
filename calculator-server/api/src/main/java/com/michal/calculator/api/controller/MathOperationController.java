@@ -29,9 +29,9 @@ public class MathOperationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMathExpressions);
     }
 
-    @GetMapping("/{userId}/{name}")
-    public ResponseEntity<MathOperationDAO> getMathOperationByUserIdAndName(@PathVariable String userId, @PathVariable String name) {
-        var mathOperation = mathOperationService.getMathOperationByUserIdAndName(userId, name);
+    @GetMapping("/{userName}/{title}")
+    public ResponseEntity<MathOperationDAO> getMathOperationByUserIdAndName(@PathVariable String userName, @PathVariable String title) {
+        var mathOperation = mathOperationService.getMathOperationByUserIdAndName(userName, title);
 
         if (mathOperation != null) {
             return ResponseEntity.ok(mathOperation);

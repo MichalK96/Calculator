@@ -27,7 +27,9 @@ public class MathOperationDAO {
     @JsonManagedReference
     @OneToMany(mappedBy = "mathOperation", cascade = CascadeType.ALL)
     private List<ExpressionDAO> expressions;
-    @OneToOne(mappedBy = "mathOperation", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "math_result_id", referencedColumnName = "id")
     private MathResultDAO mathResult;
 }
 

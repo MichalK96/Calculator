@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class MathOperationService {
@@ -32,6 +31,7 @@ public class MathOperationService {
     public MathOperationDAO saveResult(String result, String userName, String title) {
         var mathOperation = mathOperationRepository.findByUserNameAndTitle(userName, title);
         var mathResult = new MathResultDAO();
+
         mathResult.setResult(new BigDecimal(result));
         mathOperation.setMathResult(mathResult);
         return mathOperationRepository.save(mathOperation);

@@ -6,9 +6,6 @@ import lombok.Setter;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 @Setter
 public class ApiOutputHandler implements OutputStrategy {
 
@@ -22,11 +19,7 @@ public class ApiOutputHandler implements OutputStrategy {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        Map<String, Object> requestBody = new LinkedHashMap<>();
-        requestBody.put("result", result);
-
-        HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
-
+        HttpEntity<String> requestEntity = new HttpEntity<>(result, headers);
         ResponseEntity<Void> responseEntity = restTemplate.exchange(
                 String.format("http://%s:8080/api/math-operations/save-result/%s/%s", host, userName, title),
                 HttpMethod.PUT,

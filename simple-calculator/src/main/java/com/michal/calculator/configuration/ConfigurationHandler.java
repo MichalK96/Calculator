@@ -29,7 +29,7 @@ public class ConfigurationHandler {
                 1 File
                 2 Console
                 3 File and console
-                4 sent to server
+                4 Sent to server
                 """);
         switch (value) {
             case "1" -> setFileOutputProperties();

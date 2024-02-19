@@ -27,3 +27,10 @@ q
 Asrc/main/java/com/michal/calculator/configuration/Properties.java,9\c\9cc462c8257a767c485fa3ea9bb5117245f01e89
 |
 Lsrc/main/java/com/michal/calculator/application/port/out/OutputStrategy.java,1\f\1fa7c3a9699820af358117c004298fc017bc5105
+:
+
+README.txt,f\d\fda3484edf8db0684440157ce0b110d784d42704
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+|
+Lsrc/main/java/com/michal/calculator/application/core/ArithmeticOperator.java,6\4\64cf3ffbdb667f11076e157e12e2b994941ffd95

@@ -1,7 +1,9 @@
 package com.michal.calculator.api.dao;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,8 +24,6 @@ public class MathResultDAO {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
     private BigDecimal result;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "math_operation_id")
-    private MathOperationDAO mathOperation;
+
 
 }
