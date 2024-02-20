@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class ConfigurationHandler {
 
     private static final String HOST_PATTERN = "^(?:(?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)+[A-Za-z]{2,6}$";
-    private static final String HOST_PATTERN2_toTestAdnReplace = "^(?:(?!-)[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\\.)+[A-Za-z]{2,6}$"
+    private static final String HOST_PATTERN2_toTestAdnReplace = "^(?:(?!-)[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\\.)+[A-Za-z]{2,6}$"  // TODO
             ;
     private static Properties properties;
 

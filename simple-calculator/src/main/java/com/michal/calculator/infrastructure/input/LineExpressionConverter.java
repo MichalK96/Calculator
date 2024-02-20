@@ -28,12 +28,8 @@ class LineExpressionConverter {
         StringBuilder output = new StringBuilder();
         for (int i = expression.length() - 1;i >= 0; i--) {
             if (isPartOfNumber(expression.charAt(i))) {
-
                 output.append(expression.charAt(i));
             } else {
-//                if (output.isEmpty()) {
-//                    throw new IllegalArgumentException("No number provided");
-//                }
                 break;
             }
         }

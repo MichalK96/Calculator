@@ -1,8 +1,5 @@
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\application\core\FakeInputHandler.java
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\application\core\CalculationHandlerTest.java
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\calculator\CalculatorResourcesTest.java
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\application\core\FakeOutputHandler.java
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\application\core\StreamTests.java
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\infrastructure\input\LineExpressionConverterTest.java
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\calculator\CalculatorResourcesUtilsTest.java
-E:\CodeCool\storeware calculator\storeware calculator\src\test\java\com\michal\calculator\application\core\EngineTest.java
+E:\CodeCool\storeware calculator\storeware calculator\simple-calculator\src\test\java\com\michal\calculator\application\core\FakeInputHandler.java
+E:\CodeCool\storeware calculator\storeware calculator\simple-calculator\src\test\java\com\michal\calculator\infrastructure\input\LineExpressionConverterTest.java
+E:\CodeCool\storeware calculator\storeware calculator\simple-calculator\src\test\java\com\michal\calculator\application\core\FakeOutputHandler.java
+E:\CodeCool\storeware calculator\storeware calculator\simple-calculator\src\test\java\com\michal\calculator\application\core\EngineTest.java
+E:\CodeCool\storeware calculator\storeware calculator\simple-calculator\src\test\java\com\michal\calculator\application\core\CalculationHandlerTest.java

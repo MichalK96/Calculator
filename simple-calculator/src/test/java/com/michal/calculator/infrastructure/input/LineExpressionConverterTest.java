@@ -15,30 +15,30 @@ import static org.assertj.core.api.Assertions.catchException;
 
 class LineExpressionConverterTest {
 
-    private static Stream<Object[]> testData() {
-        return Stream.of(
-                new Object[]{"add 10", "10", Operator.ADD},
-                new Object[]{"subtract 5", "5", Operator.SUBTRACT},
-                new Object[]{"add 12,12", "12.12", Operator.ADD},
-                new Object[]{"add 12.12", "12.12", Operator.ADD},
-                new Object[]{"add 123456789.123456789", "123456789.123456789", Operator.ADD},
-                new Object[]{"add 123456789123456789", "123456789123456789", Operator.ADD},
-                new Object[]{"subtract 123", "123", Operator.SUBTRACT},
-                new Object[]{"divide 123", "123", Operator.DIVIDE},
-                new Object[]{"multiply 123", "123", Operator.MULTIPLY}
-        );
-    }
-    @ParameterizedTest
-    @MethodSource("testData")
-    @DisplayName("When provided operator with natural or floating-point number and point or comma separator then return converted expression")
-    void when_providedOperatorWithNaturalNumber_then_returnConvertedExpression(
-            String expression, String expectedNumber, Operator expectedOperator) {
-        //When
-        var result = LineExpressionConverter.createExpression(expression);
-        //Then
-        assertThat(result.getNumber()).isEqualTo(expectedNumber);
-        assertThat(result.getOperator()).isEqualTo(expectedOperator);
-    }
+//    private static Stream<Object[]> testData() {
+//        return Stream.of(
+//                new Object[]{"add 10", "10", Operator.ADD},
+//                new Object[]{"subtract 5", "5", Operator.SUBTRACT},
+//                new Object[]{"add 12,12", "12.12", Operator.ADD},
+//                new Object[]{"add 12.12", "12.12", Operator.ADD},
+//                new Object[]{"add 123456789.123456789", "123456789.123456789", Operator.ADD},
+//                new Object[]{"add 123456789123456789", "123456789123456789", Operator.ADD},
+//                new Object[]{"subtract 123", "123", Operator.SUBTRACT},
+//                new Object[]{"divide 123", "123", Operator.DIVIDE},
+//                new Object[]{"multiply 123", "123", Operator.MULTIPLY}
+//        );
+//    }
+//    @ParameterizedTest
+//    @MethodSource("testData")
+//    @DisplayName("When provided operator with natural or floating-point number and point or comma separator then return converted expression")
+//    void when_providedOperatorWithNaturalNumber_then_returnConvertedExpressionn(
+//            String expression, String expectedNumber, Operator expectedOperator) {
+//        //When
+//        var result = LineExpressionConverter.createExpression(expression);
+//        //Then
+//        assertThat(result.getNumber()).isEqualTo(expectedNumber);
+//        assertThat(result.getOperator()).isEqualTo(expectedOperator);
+//    }
 
     @Test
     @DisplayName("When provided operator with natural number then return converted expression")

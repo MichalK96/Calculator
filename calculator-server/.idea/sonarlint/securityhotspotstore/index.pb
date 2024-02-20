@@ -17,3 +17,5 @@ Japi/src/main/java/com/michal/calculator/api/service/MathResultService.java,a\9
 api/readme.txt,1\9\197e41a138ac8557d6f2bda7d55a7eeac500596f
 r
 Bapi/src/main/java/com/michal/calculator/api/dao/ExpressionDAO.java,d\f\df8a263110a7b9b45408ee2135b2475e19798e69
+;
+api/pom.xml,f\e\fe5c43214168bd8de1d8afa275215a8e9b9de634
