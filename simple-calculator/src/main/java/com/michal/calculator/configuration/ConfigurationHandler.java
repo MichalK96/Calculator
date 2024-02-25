@@ -64,7 +64,7 @@ public class ConfigurationHandler {
                 Select data source
                 1 File
                 2 Enter manually
-                3 Fetch from API
+                3 Fetch from API or create new
                 """);
         switch (userInput) {
             case "1" -> setFileInputProperties();

@@ -45,6 +45,7 @@ public class CalculatorConfiguration {
                 apiInputHandler.setHost(properties.getHost());
                 apiInputHandler.setUserName(properties.getUserName());
                 apiInputHandler.setTitle(properties.getTitle());
+                apiInputHandler.addMathOperation(properties.getUserName(), properties.getTitle());
             }
             return this;
         }

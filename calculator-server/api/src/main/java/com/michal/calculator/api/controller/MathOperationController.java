@@ -7,9 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/math-operations")
@@ -24,7 +22,7 @@ public class MathOperationController {
     }
 
     @PostMapping()
-    public ResponseEntity<MathOperationDAO> createMathExpression(@RequestBody MathOperationDAO mathOperationDAO) {
+    public ResponseEntity<MathOperationDAO> createMathOperation(@RequestBody MathOperationDAO mathOperationDAO) {
         var savedMathExpressions = mathOperationService.save(mathOperationDAO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMathExpressions);
     }
