@@ -39,22 +39,20 @@ public class ApiInputHandler implements InputStrategy {
         saveMathOperation(apiMathOperation);
     }
 
-    private void saveMathOperation(ApiMathOperation apiMathOperation) {   //TODO refactor and more tests
-        HttpHeaders headers = new HttpHeaders();
+    private void saveMathOperation(ApiMathOperation apiMathOperation) {
+        var headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<ApiMathOperation> requestEntity = new HttpEntity<>(apiMathOperation, headers);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<ApiMathOperation> responseEntity = restTemplate.exchange(
+        var requestEntity = new HttpEntity<>(apiMathOperation, headers);
+        var responseEntity = restTemplate.exchange(
                 String.format("http://%s:8080/api/math-operations", host),
                 HttpMethod.POST,
                 requestEntity,
                 ApiMathOperation.class);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            ApiMathOperation createdMathOperation = responseEntity.getBody();
-            System.out.println("Utworzono nową operację matematyczną: " + createdMathOperation);
+            ConsolePrinter.printInfo("Created new mathematical operation");
         } else {
-            System.err.println("Błąd podczas tworzenia operacji matematycznej: " + responseEntity.getStatusCode());
+            ConsolePrinter.printError("Error during creating mathematical operation: " + responseEntity.getStatusCode());
         }
     }
 
@@ -87,7 +85,7 @@ public class ApiInputHandler implements InputStrategy {
     private FileInputHandler generateFileInputHandler() {
         var fileInputHandler = new FileInputHandler();
         fileInputHandler.setFilePath(ConsoleUtil.getUserInput("Provide file path or press enter to use default"));
-        if (fileInputHandler.getFilePath().isEmpty()) {
+        if (fileInputHandler.getFilePath() == null) {
             fileInputHandler.setFilePath(new Properties().getFilePath());
         }
         return fileInputHandler;
