@@ -3,14 +3,12 @@ package com.michal.calculator.configuration;
 import com.michal.calculator.util.ConsolePrinter;
 import com.michal.calculator.util.ConsoleReader;
 import com.michal.calculator.util.ConsoleUtil;
+import org.apache.commons.validator.routines.InetAddressValidator;
 
 import java.util.regex.Pattern;
 
 public class ConfigurationHandler {
 
-    private static final String HOST_PATTERN = "^(?:(?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)+[A-Za-z]{2,6}$";
-    private static final String HOST_PATTERN2_toTestAdnReplace = "^(?:(?!-)[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\\.)+[A-Za-z]{2,6}$"  // TODO
-            ;
     private static Properties properties;
 
     private ConfigurationHandler() {}
@@ -101,18 +99,13 @@ public class ConfigurationHandler {
     }
 
     private static String getHost() {
+        var hostValidator = InetAddressValidator.getInstance();
         var host = ConsoleUtil.getUserInput("Provide host");
-        if (isValidHost(host)) {
+        if (hostValidator.isValid(host)) {
             return host;
         }
         ConsolePrinter.printWarn("Incorrect value");
         return getHost();
-    }
-
-    private static boolean isValidHost(String host) {
-        var pattern = Pattern.compile(HOST_PATTERN);
-        var matcher = pattern.matcher(host);
-        return matcher.matches();
     }
 
 }
