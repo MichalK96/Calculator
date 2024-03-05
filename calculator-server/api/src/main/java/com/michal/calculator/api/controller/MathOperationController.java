@@ -13,8 +13,14 @@ import java.util.List;
 @RequestMapping("/math-operations")
 public class MathOperationController {
 
+    private final MathOperationService mathOperationService;
+
     @Autowired
-    private MathOperationService mathOperationService;
+    public MathOperationController(MathOperationService mathOperationService) {
+        this.mathOperationService = mathOperationService;
+    }
+
+
 
     @GetMapping()
     public List<MathOperationDAO> getAllMathOperations() {

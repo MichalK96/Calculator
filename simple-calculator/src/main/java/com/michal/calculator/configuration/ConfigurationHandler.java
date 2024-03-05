@@ -94,8 +94,8 @@ public class ConfigurationHandler {
         if (!localhost) {
             properties.setHost(getHost());
         }
-        properties.setUserName(ConsoleUtil.getUserInput("Provide user name"));
-        properties.setTitle(ConsoleUtil.getUserInput("Math expression title"));
+        properties.setUserName(ConsoleUtil.getUserInput("Provide user name (existed or new one)"));
+        properties.setTitle(ConsoleUtil.getUserInput("Math expression title (existed or new one)"));
     }
 
     private static String getHost() {

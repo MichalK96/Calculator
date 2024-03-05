@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class MathResultController {
 
+    private final MathResultService mathResultService;
+
     @Autowired
-    MathResultService mathResultService;
+    public MathResultController(MathResultService mathResultService) {
+        this.mathResultService = mathResultService;
+    }
 
 }
