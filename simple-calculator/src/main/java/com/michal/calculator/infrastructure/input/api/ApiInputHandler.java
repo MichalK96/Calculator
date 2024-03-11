@@ -8,10 +8,12 @@ import com.michal.calculator.infrastructure.input.FileInputHandler;
 import com.michal.calculator.util.ConsolePrinter;
 import com.michal.calculator.util.ConsoleUtil;
 import lombok.Setter;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Setter

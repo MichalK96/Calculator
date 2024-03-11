@@ -5,8 +5,6 @@ import com.michal.calculator.util.ConsoleReader;
 import com.michal.calculator.util.ConsoleUtil;
 import org.apache.commons.validator.routines.InetAddressValidator;
 
-import java.util.regex.Pattern;
-
 public class ConfigurationHandler {
 
     private static Properties properties;
